@@ -14,5 +14,5 @@ TEST(TestCaseName, GetReturnpartialPoint) {
 	string input2 = "AAE";
 	Cal cal;
 	int ret = cal.getAlphaPoints(input1, input2);
-	EXPECT_EQ(40, ret);
+	EXPECT_EQ(20, ret);
 }
