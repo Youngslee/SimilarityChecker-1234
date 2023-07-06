@@ -8,3 +8,11 @@ TEST(TestCaseName, GetReturnSameAlphas) {
 	int ret = cal.getAlphaPoints(input1, input2);
 	EXPECT_EQ(40, ret);
 }
+
+TEST(TestCaseName, GetReturnpartialPoint) {
+	string input1 = "AA";
+	string input2 = "AAE";
+	Cal cal;
+	int ret = cal.getAlphaPoints(input1, input2);
+	EXPECT_EQ(40, ret);
+}
