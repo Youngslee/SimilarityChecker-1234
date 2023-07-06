@@ -3,7 +3,8 @@ using namespace std;
 class Cal
 {
 public:
-	
+	const int MAX_ALPHA_SCORE = 40;
+	const int MIN_ALPHA_SCORE = 0;
 
 	int getAlphaPoints(const string& input1, const string& input2)
 	{
@@ -36,8 +37,7 @@ private :
 		if (totalCnt == sameCnt) return MAX_ALPHA_SCORE;
 		return (sameCnt / (double)totalCnt) * MAX_ALPHA_SCORE;
 	}
-	const int MAX_ALPHA_SCORE = 40;
-	const int MIN_ALPHA_SCORE = 40;
+
 	int input1_cnt[26] = {0,};
 	int input2_cnt[26] = { 0, };
 };
