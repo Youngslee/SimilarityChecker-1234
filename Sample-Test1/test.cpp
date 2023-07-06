@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "../project15/Cal.cpp"
-TEST(TestCaseName, TestName) {
+TEST(TestCaseName, getReturnSameLengthPoint) {
 	string input1 = "ABC";
 	string input2 = "BBY";
 	Cal cal;
