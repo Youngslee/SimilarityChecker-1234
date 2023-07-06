@@ -15,3 +15,12 @@ TEST(TestCaseName, getReturnPartialPoint) {
 	int ret = cal.getLengthPoint(input1, input2);
 	EXPECT_EQ(20, ret);
 }
+
+TEST(TestCaseName, getReturnZeroPoint) {
+	string input1 = "A";
+	string input2 = "BBB";
+	Cal cal;
+	int ret = cal.getLengthPoint(input1, input2);
+	EXPECT_EQ(0, ret);
+}
+
