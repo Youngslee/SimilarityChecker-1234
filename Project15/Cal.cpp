@@ -2,28 +2,36 @@
 using namespace std;
 class Cal
 {
+
 public:
+	const int SAME_LENGTH_MAX_SCORE = 60;
+	const int SAME_LENGTH_MIN_SCORE = 0;
 	int getLengthPoint(const string & input1, const string & input2)
 	{
-		if(input1.size() - input2.size() == 0)
-		{
-			return SAME_LENGTH_MAX_SCORE;
-		}
-		return getPoints(input1, input2);
+		len1 = input1.length();
+		len2 = input2.length();
+		
+		return getPoints();
 	}
 
 private:
-	int getPoints(const string& input1, const string& input2)
+	int getPoints()
 	{
-		int gap = input1.size() - input2.size();
-		int shortLength = input1.size();
-		if (gap > 0) shortLength = input2.size();
+		int gap = len1 - len2;
+		int shortLength = len1;
+		int longLength = len2;
+		if (gap > 0) {
+			shortLength = len2;
+			longLength = len1;
+		}
+		if (len1 - len2 == 0) return SAME_LENGTH_MAX_SCORE;
+		if (longLength >= shortLength * 2) return SAME_LENGTH_MIN_SCORE;
 
 		double points = (1 - ((double)abs(gap) / (double)shortLength));
-
-		if (points <= 0) return 0;
-
 		return points * SAME_LENGTH_MAX_SCORE;
 	}
-	const int SAME_LENGTH_MAX_SCORE = 60;
+
+	int len1 = 0;
+	int len2 = 0;
+
 };

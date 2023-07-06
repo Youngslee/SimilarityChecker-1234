@@ -1,23 +1,35 @@
 #include "pch.h"
 #include "../project15/Cal.cpp"
-TEST(TestCaseName, getReturnSameLengthPoint) {
+class SameLengthFixture : public testing::Test
+{
+public:
 	Cal cal;
-	string input1 = "ABC";
-	string input2 = "BBY";
-	EXPECT_EQ(60, cal.getLengthPoint(input1, input2));
+	string input1;
+	string input2;
+	int expected;
+	void getResult()
+	{
+		EXPECT_EQ(expected, cal.getLengthPoint(input1, input2));
+	}
+};
+TEST_F(SameLengthFixture, getReturnSameLengthPoint) {
+	input1 = "ABC";
+	input2 = "BBY";
+	expected = cal.SAME_LENGTH_MAX_SCORE;
+	getResult();
 }
 
-TEST(TestCaseName, getReturnPartialPoint) {
-	Cal cal;
-	string input1 = "AAABB";
-	string input2 = "BAA";
-	EXPECT_EQ(20, cal.getLengthPoint(input1, input2));
+TEST_F(SameLengthFixture, getReturnPartialPoint) {
+	input1 = "AAABB";
+	input2 = "BAA";
+	expected = 20;
+	getResult();
 }
 
-TEST(TestCaseName, getReturnZeroPoint) {
-	Cal cal;
-	string input1 = "A";
-	string input2 = "BBB";
-	EXPECT_EQ(0, cal.getLengthPoint(input1, input2));
+TEST_F(SameLengthFixture, getReturnZeroPoint) {
+	input1 = "A";
+	input2 = "BBB";
+	expected = cal.SAME_LENGTH_MIN_SCORE;;
+	getResult();
 }
 
