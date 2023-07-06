@@ -1,32 +1,42 @@
 #include "pch.h"
 #include "../Project15/Cal.cpp"
 
-TEST(TestCaseName, GetReturnSameAlphas1) {
-	string input1 = "ASD";
-	string input2 = "DSA";
+class AlphaFixture : public testing::Test
+{
+public:
+	string input1;
+	string input2;
 	Cal cal;
-	int ret = cal.getAlphaPoints(input1, input2);
-	EXPECT_EQ(cal.MAX_ALPHA_SCORE, ret);
+	int expected;
+	void checkResult()
+	{
+		EXPECT_EQ(expected, \
+			cal.getAlphaPoints(input1, input2));
+	}
+};
+
+TEST_F(AlphaFixture, GetReturnSameAlphas1) {
+	input1 = "ASD";
+	input2 = "DSA";
+	expected = cal.MAX_ALPHA_SCORE;
+	checkResult();
 }
-TEST(TestCaseName, GetReturnSameAlpas2) {
-	string input1 = "AAABB";
-	string input2 = "BA";
-	Cal cal;
-	int ret = cal.getAlphaPoints(input1, input2);
-	EXPECT_EQ(cal.MAX_ALPHA_SCORE, ret);
+TEST_F(AlphaFixture, GetReturnSameAlpas2) {
+	input1 = "AAABB";
+	input2 = "BA";
+	expected = cal.MAX_ALPHA_SCORE;
+	checkResult();
 }
-TEST(TestCaseName, GetReturnPartialPoint1) {
-	string input1 = "AA";
-	string input2 = "AAE";
-	Cal cal;
-	int ret = cal.getAlphaPoints(input1, input2);
-	EXPECT_EQ(20, ret);
+TEST_F(AlphaFixture, GetReturnPartialPoint1) {
+	input1 = "AA";
+	input2 = "AAE";
+	expected = 20;
+	checkResult();
 }
 
-TEST(TestCaseName, GetReturnZeroPoint) {
-	string input1 = "A";
-	string input2 = "BB";
-	Cal cal;
-	int ret = cal.getAlphaPoints(input1, input2);
-	EXPECT_EQ(cal.MIN_ALPHA_SCORE, ret);
+TEST_F(AlphaFixture, GetReturnZeroPoint) {
+	input1 = "A";
+	input2 = "BB";
+	expected = cal.MIN_ALPHA_SCORE;
+	checkResult();
 }
