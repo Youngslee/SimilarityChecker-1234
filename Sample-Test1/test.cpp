@@ -7,3 +7,11 @@ TEST(TestCaseName, getReturnSameLengthPoint) {
 	int ret = cal.getLengthPoint(input1, input2);
 	EXPECT_EQ(60, ret);
 }
+
+TEST(TestCaseName, getReturnPartialPoint) {
+	string input1 = "AAABB";
+	string input2 = "BAA";
+	Cal cal;
+	int ret = cal.getLengthPoint(input1, input2);
+	EXPECT_EQ(20, ret);
+}

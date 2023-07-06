@@ -10,6 +10,12 @@ public:
 		{
 			return SAME_LENGTH_MAX_SCORE;
 		}
+
+		int shortLength = input1.size();
+		if (gap > 0) shortLength = input2.size();
+
+		int result = (1 - ((double)abs(gap) / (double)shortLength)) * 60;
+		return result;
 	}
 
 private:
